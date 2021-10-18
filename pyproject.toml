@@ -7,6 +7,11 @@ authors = ["jdjg"]
 [tool.poetry.dependencies]
 python = "^3.8"
 python-dotenv = "^0.19.1"
+jishaku = {git = "https://github.com/Gorialis/jishaku"}
+doc-search = {git = "https://github.com/Tom-the-Bomb/doc-search"}
+discord-ext-menus-views = {git = "https://github.com/JDJGInc/discord-ext-menus-views"}
+"discord.py" = {git = "https://github.com/iDevision/enhanced-discord.py", branch = "2.0"}
+discord-ext-menus = {git = "https://github.com/Rapptz/discord-ext-menus"}
 
 [tool.poetry.dev-dependencies]
 
