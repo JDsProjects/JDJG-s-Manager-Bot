@@ -4,6 +4,7 @@ import discord
 import os
 import traceback
 import re
+import dotenv
 
 async def get_prefix(bot, message):
   extras = ["manager*", "jm*", "e*"]
@@ -43,5 +44,5 @@ for filename in os.listdir('./cogs'):
     except commands.errors.ExtensionError:
       traceback.print_exc()
 
-
+dotenv.load_dotenv()
 bot.run(os.environ["TOKEN"])
