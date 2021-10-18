@@ -12,6 +12,7 @@ doc-search = {git = "https://github.com/Tom-the-Bomb/doc-search"}
 discord-ext-menus-views = {git = "https://github.com/JDJGInc/discord-ext-menus-views"}
 "discord.py" = {git = "https://github.com/iDevision/enhanced-discord.py", branch = "2.0"}
 discord-ext-menus = {git = "https://github.com/Rapptz/discord-ext-menus"}
+asyncpg = "^0.24.0"
 
 [tool.poetry.dev-dependencies]
 
