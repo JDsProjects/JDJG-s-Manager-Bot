@@ -53,4 +53,7 @@ logging.basicConfig(level=logging.INFO)
 handler = logging.FileHandler(
     filename='discord.log', encoding='utf-8', mode='w')
 
+bot.change_presence(status=discord.Status.online, activity=discord.Activity(
+    type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"))
+
 bot.run(os.environ["TOKEN"])
