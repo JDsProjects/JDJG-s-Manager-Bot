@@ -5,18 +5,21 @@ import os
 import traceback
 import re
 import dotenv
+import logging
+
 
 async def get_prefix(bot, message):
   extras = ["manager*", "jm*", "e*"]
-
-  if await bot.is_owner(message.author):
-    extras.append("")
 
   comp = re.compile(
       "^(" + "|".join(map(re.escape, extras)) + ").*", flags=re.I)
   match = comp.match(message.content)
   if match is not None:
     extras.append(match.group(1))
+
+  if await bot.is_owner(message.author):
+    extras.append("")
+
 
   return commands.when_mentioned_or(*extras)(bot, message)
 
@@ -45,4 +48,9 @@ for filename in os.listdir('./cogs'):
       traceback.print_exc()
 
 dotenv.load_dotenv()
+logging.basicConfig(level=logging.INFO)
+
+handler = logging.FileHandler(
+    filename='discord.log', encoding='utf-8', mode='a')
+
 bot.run(os.environ["TOKEN"])
