@@ -1,3 +1,4 @@
+from discord.enums import Status
 from discord.ext import commands
 import aiohttp
 import discord
@@ -37,7 +38,9 @@ class ManagerBot(commands.Bot):
 
 
 bot = ManagerBot(command_prefix=(get_prefix), intents=discord.Intents.all(), chunk_guilds_at_startup=False,
-                 strip_after_prefix=True, allowed_mentions=discord.AllowedMentions(everyone=False, roles=False))
+                 strip_after_prefix=True, allowed_mentions=discord.AllowedMentions(everyone=False, roles=False), status = discord.Status.online, activity=discord.Activity(
+    type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"))
+
 
 
 for filename in os.listdir('./cogs'):
@@ -52,8 +55,5 @@ logging.basicConfig(level=logging.INFO)
 
 handler = logging.FileHandler(
     filename='discord.log', encoding='utf-8', mode='w')
-
-bot.change_presence(status=discord.Status.online, activity=discord.Activity(
-    type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"))
 
 bot.run(os.environ["TOKEN"])
