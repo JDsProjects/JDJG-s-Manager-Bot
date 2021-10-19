@@ -51,6 +51,6 @@ dotenv.load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
 handler = logging.FileHandler(
-    filename='discord.log', encoding='utf-8', mode='a')
+    filename='discord.log', encoding='utf-8', mode='w')
 
 bot.run(os.environ["TOKEN"])
