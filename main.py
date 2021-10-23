@@ -37,9 +37,9 @@ class ManagerBot(commands.Bot):
         await super().close()
 
 
-bot = ManagerBot(command_prefix=(get_prefix), intents=discord.Intents.all(), chunk_guilds_at_startup=False,
-                 strip_after_prefix=True, allowed_mentions=discord.AllowedMentions(everyone=False, roles=False), status = discord.Status.online, activity=discord.Activity(
-    type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"))
+bot = ManagerBot(command_prefix = (get_prefix), intents = discord.Intents.all(), chunk_guilds_at_startup = False,
+                 strip_after_prefix = True, allowed_mentions = discord.AllowedMentions(everyone = False, roles = False), status = discord.Status.online, activity = discord.Activity(
+    type = discord.ActivityType.listening, name = f"Testing by JDJG about vpses"))
 
 
 
@@ -51,7 +51,7 @@ for filename in os.listdir('./cogs'):
       traceback.print_exc()
 
 dotenv.load_dotenv()
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level = logging.INFO)
 
 handler = logging.FileHandler(
     filename='discord.log', encoding='utf-8', mode='w')
