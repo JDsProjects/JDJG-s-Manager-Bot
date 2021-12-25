@@ -12,8 +12,7 @@ import logging
 async def get_prefix(bot, message):
     extras = ["manager*", "jm*", "e*"]
 
-    comp = re.compile(
-        "^(" + "|".join(map(re.escape, extras)) + ").*", flags=re.I)
+    comp = re.compile("^(" + "|".join(map(re.escape, extras)) + ").*", flags=re.I)
     match = comp.match(message.content)
     if match is not None:
         extras.append(match.group(1))
@@ -37,15 +36,23 @@ class ManagerBot(commands.Bot):
         await super().close()
 
 
-bot = ManagerBot(command_prefix=(get_prefix), intents=discord.Intents.all(), chunk_guilds_at_startup=False,
-                 strip_after_prefix=True, allowed_mentions=discord.AllowedMentions(everyone=False, roles=False), status=discord.Status.online, activity=discord.Activity(
-    type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"))
+bot = ManagerBot(
+    command_prefix=(get_prefix),
+    intents=discord.Intents.all(),
+    chunk_guilds_at_startup=False,
+    strip_after_prefix=True,
+    allowed_mentions=discord.AllowedMentions(everyone=False, roles=False),
+    status=discord.Status.online,
+    activity=discord.Activity(
+        type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"
+    ),
+)
 
 
-for filename in os.listdir('./cogs'):
-    if filename.endswith('.py'):
+for filename in os.listdir("./cogs"):
+    if filename.endswith(".py"):
         try:
-            bot.load_extension(f'cogs.{filename[:-3]}')
+            bot.load_extension(f"cogs.{filename[:-3]}")
         except commands.errors.ExtensionError:
             traceback.print_exc()
 
@@ -57,10 +64,10 @@ async def on_error(event, *args, **kwargs):
     traceback.print_exc()
     # print(more_information[0])
 
+
 dotenv.load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
-handler = logging.FileHandler(
-    filename='discord.log', encoding='utf-8', mode='w')
+handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mode="w")
 
 bot.run(os.environ["TOKEN"])
