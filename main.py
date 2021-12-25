@@ -12,7 +12,8 @@ import logging
 async def get_prefix(bot, message):
     extras = ["manager*", "jm*", "e*"]
 
-    comp = re.compile("^(" + "|".join(map(re.escape, extras)) + ").*", flags=re.I)
+    comp = re.compile(
+        "^(" + "|".join(map(re.escape, extras)) + ").*", flags=re.I)
     match = comp.match(message.content)
     if match is not None:
         extras.append(match.group(1))
@@ -68,6 +69,7 @@ async def on_error(event, *args, **kwargs):
 dotenv.load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
-handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mode="w")
+handler = logging.FileHandler(
+    filename="discord.log", encoding="utf-8", mode="w")
 
 bot.run(os.environ["TOKEN"])
