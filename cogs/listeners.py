@@ -12,13 +12,9 @@ class Events(commands.Cog):
     async def on_guild_join(self, guild):
         channels = [channel for channel in guild.channels]
         roles = roles = [role for role in guild.roles]
-        embed = discord.Embed(
-            title=f"Bot just joined : {guild.name}", color=random.randint(0, 16777215)
-        )
+        embed = discord.Embed(title=f"Bot just joined : {guild.name}", color=random.randint(0, 16777215))
 
-        embed.set_thumbnail(
-            url=guild.icon.url if guild.icon else "https://i.imgur.com/3ZUrjUP.png"
-        )
+        embed.set_thumbnail(url=guild.icon.url if guild.icon else "https://i.imgur.com/3ZUrjUP.png")
 
         embed.add_field(name="Server Name:", value=f"{guild.name}")
         embed.add_field(name="Server ID:", value=f"{guild.id}")
@@ -38,13 +34,9 @@ class Events(commands.Cog):
     async def on_guild_remove(self, guild):
         channels = [channel for channel in guild.channels]
         roles = roles = [role for role in guild.roles]
-        embed = discord.Embed(
-            title=f"Bot just left : {guild.name}", color=random.randint(0, 16777215)
-        )
+        embed = discord.Embed(title=f"Bot just left : {guild.name}", color=random.randint(0, 16777215))
 
-        embed.set_thumbnail(
-            url=guild.icon.url if guild.icon else "https://i.imgur.com/3ZUrjUP.png"
-        )
+        embed.set_thumbnail(url=guild.icon.url if guild.icon else "https://i.imgur.com/3ZUrjUP.png")
 
         embed.add_field(name="Server Name:", value=f"{guild.name}")
         embed.add_field(name="Server ID:", value=f"{guild.id}")
@@ -86,12 +78,7 @@ class Events(commands.Cog):
                         "Ticket Support is coming soon. For now Contact our Developers: Shadi#9492 or JDJG Inc. Official#3493"
                     )
 
-        if (
-            (test.valid) == False
-            and test.prefix != None
-            and test.command is None
-            and test.prefix != ""
-        ):
+        if (test.valid) == False and test.prefix != None and test.command is None and test.prefix != "":
 
             embed_message = discord.Embed(
                 title=f" {test.prefix}{test.invoked_with}",
