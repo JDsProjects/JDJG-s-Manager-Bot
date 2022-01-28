@@ -1,4 +1,4 @@
-python-dotdev
+python-dotenv
 git+https://github.com/Gorialis/jishaku
 git+https://github.com/Tom-the-Bomb/doc-search
 git+https://github.com/iDevision/enhanced-discord.py@2.0
