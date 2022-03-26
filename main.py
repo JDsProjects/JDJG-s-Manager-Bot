@@ -12,8 +12,7 @@ import logging
 async def get_prefix(bot, message):
     extras = ["manager*", "jm*", "e*"]
 
-    comp = re.compile(
-        "^(" + "|".join(map(re.escape, extras)) + ").*", flags=re.I)
+    comp = re.compile("^(" + "|".join(map(re.escape, extras)) + ").*", flags=re.I)
     match = comp.match(message.content)
     if match is not None:
         extras.append(match.group(1))
@@ -36,6 +35,14 @@ class ManagerBot(commands.Bot):
         await self.session.close()
         await super().close()
 
+    async def setup_hook(self):
+        for filename in os.listdir("./cogs"):
+            if filename.endswith(".py"):
+                try:
+                    await bot.load_extension(f"cogs.{filename[:-3]}")
+                except commands.errors.ExtensionError:
+                    traceback.print_exc()
+
 
 bot = ManagerBot(
     command_prefix=(get_prefix),
@@ -44,17 +51,8 @@ bot = ManagerBot(
     strip_after_prefix=True,
     allowed_mentions=discord.AllowedMentions(everyone=False, roles=False),
     status=discord.Status.online,
-    activity=discord.Activity(
-        type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"),
+    activity=discord.Activity(type=discord.ActivityType.listening, name=f"Testing by JDJG about vpses"),
 )
-
-
-for filename in os.listdir("./cogs"):
-    if filename.endswith(".py"):
-        try:
-            bot.load_extension(f"cogs.{filename[:-3]}")
-        except commands.errors.ExtensionError:
-            traceback.print_exc()
 
 
 @bot.event
@@ -68,7 +66,6 @@ async def on_error(event, *args, **kwargs):
 dotenv.load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
-handler = logging.FileHandler(
-    filename="discord.log", encoding="utf-8", mode="w")
+handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mode="w")
 
 bot.run(os.environ["TOKEN"])
