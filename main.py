@@ -1,12 +1,14 @@
-from discord.enums import Status
-from discord.ext import commands
+import logging
+import os
+import re
+import sys
+import traceback
+
 import aiohttp
 import discord
-import os
-import traceback
-import re
 import dotenv
-import logging
+from discord.enums import Status
+from discord.ext import commands
 
 
 async def get_prefix(bot, message):
@@ -57,7 +59,7 @@ bot = ManagerBot(
 
 @bot.event
 async def on_error(event, *args, **kwargs):
-    more_information = os.sys.exc_info()
+    more_information = sys.exc_info()
     error_wanted = traceback.format_exc()
     traceback.print_exc()
     # print(more_information[0])
