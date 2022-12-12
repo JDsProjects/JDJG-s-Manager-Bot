@@ -6,7 +6,6 @@ import traceback
 
 import aiohttp
 import discord
-import dotenv
 from discord.enums import Status
 from discord.ext import commands
 
@@ -65,7 +64,6 @@ async def on_error(event, *args, **kwargs):
     # print(more_information[0])
 
 
-dotenv.load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
 handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mode="w")
